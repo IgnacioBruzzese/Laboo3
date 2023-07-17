@@ -1,0 +1,36 @@
+div{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#algo {
+    background-color: rgb(42, 138, 218);
+
+}
+
+#conpadding {
+    background-color: rgb(124, 235, 139);
+    padding: 0 3%;
+}
+
+#boxsizing {
+    background-color: rgb(206, 230, 120);
+    padding: 0 3%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+p{ font-size: 2em;
+    margin: 0;
+
+}
+
+*{
+    font-size: 12px;
+
+}
+
+h1{
+    font-size: 4em;
+
+}

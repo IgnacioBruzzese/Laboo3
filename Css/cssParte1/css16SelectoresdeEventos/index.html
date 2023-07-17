@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores de Eventos</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0%;
+            padding: 0%;
+            font-size: 16px;
+            box-sizing: border-box;
+
+        }
+
+        #principal {
+            height: 100%;
+            background-color: lightblue;
+            margin: 5% 10%;
+        }
+
+        button.boton {
+            background-color: gray;
+            width: 100px;
+            height: 70px;
+        }
+
+        button.boton:hover {
+            background-color: burlywood;
+            transform: scale(1.5);
+            transition-duration: 0.3s;
+        }
+
+        button.boton:active {
+            background-color: rgb(127, 81, 28);
+        }
+
+
+
+        a.navegacion {
+            font-size: 1.3em;
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        form#formulario {
+            margin: 10% 2%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            width: 40%;
+            min-width: 100px;
+        }
+
+        input:focus {
+            background-color: lightblue;
+        }
+
+        .container-foto {
+            float: left;
+            border: solid 2px;
+            width: 150px;
+            height: 150px;
+            margin: 1%;
+        }
+
+        img {
+            object-fit: contain;
+            width: 100%;
+            height: fit-content;
+            max-width: fit-content;
+        }
+
+        .container-foto:active {
+            width: 300px;
+            height: 300px;
+            transition-duration: 1s;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="principal">
+        <nav>
+            <button class="boton"><a href="./index1.html" class="navegacion">Opcion 1</a></button>
+            <button class="boton"><a href="./index2.html" class="navegacion">Opcion 2</a></button>
+            <button class="boton"><a href="./index3.html" class="navegacion">Opcion 3</a></button>
+        </nav>
+
+        <form action="" id="formulario">
+            <label for=" nombre">Nombre</label>
+            <input type="text" id="nombre">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido">
+        </form>
+
+        <h1>Expandir las fotos 50% del contenedor</h1>
+
+        <div class="container-foto">
+            <img src="./Imagen.jfif" alt="">
+        </div>
+        <div class="container-foto">
+            <img src="./Imagen.jfif" alt="">
+        </div>
+        <div class="container-foto">
+            <img src="./Imagen.jfif" alt="">
+        </div>
+    </div>
+</body>
+</html>

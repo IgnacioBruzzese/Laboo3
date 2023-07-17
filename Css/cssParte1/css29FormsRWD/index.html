@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms RWD</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: blue;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer{
+            width: 100%;
+            height: 10%;
+            background-color: rgb(64, 93, 224);
+            padding: 1px;
+            box-sizing: border-box;
+            float: none;
+        }
+
+        h2{
+            width: 100%;
+            text-align: center;
+            height: 100%;
+        }
+
+        #formulario{
+            background-color: rgb(153, 153, 153);
+            width: 100%;
+            height: 80%;
+            overflow: auto;
+        }
+
+        div.entry{
+            background-color: rgb(153, 153, 153);
+            float: left;
+            border: solid rgb(0, 0, 0) 4px;
+            width: 300px;
+            height: 20%;
+            display:flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        div#entrys{
+            width: 100%;
+            height: 90%;
+        }
+
+        div#enviar-resetear{
+            width: 100%;
+            height: 10%;
+            background-color: rgb(46, 46, 46);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .boton{
+            width: 30%;
+            height: 60%;
+        }
+
+        .boton:hover{
+            transition-duration: 0.5s;
+            transform: scale(1.3);
+            background-color: rgb(80, 80, 80);
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Formulario</h2>
+    </header>
+
+    <form action="" id="formulario">
+        <div id="entrys">
+        <div class="entry">
+            <label for="apellido">1. Apellido</label>
+            <input type="text" name="apellido" id="">
+        </div>
+        <div class="entry">
+            <label for="nombre">2. Nombre</label>
+            <input type="text" name="nombre">
+        </div>
+        <div class="entry">
+            <label for="clave">3. Contraseña</label>
+            <input type="password" name="clave" id="">
+        </div>
+        <div class="entry">
+            <label for="deshabilitado">Campo deshailitado</label>
+            <input type="text" disabled="" name="deshabilitado">
+        </div>
+        <div class="entry">
+            <label for="fecha">Fecha y hora</label>
+            <input type="date" name="fecha" id="">
+        </div>
+        <div class="entry">
+            <h4>7. Actividades extracurriculares</h4>
+            <label for="musica">Musica</label>
+            <input type="checkbox" name="Musica" id="">
+            <label for="artistica">Artistica</label>
+            <input type="checkbox" name="artistica" id="">
+        </div>
+        <div class="entry">
+            <h4>Sexo</h4>
+            <label for="Sexo">Masculino</label>
+            <input type="radio" name="Sexo" id="">
+            <label for="Sexo">Femenino</label>
+            <input type="radio" name="Sexo" id="">
+        </div>
+        <div class="entry">
+            <h1><strong>9. Vacio</strong></h1>
+        </div>
+        <div class="entry">
+            <label for="estudios">10 Estudios cursados</label>
+            <select name="estudios" id="">
+                <option value="primario">Primarios</option>
+                <option value="secundario">Secundarios</option>
+                <option value="universitario">Universitarios</option>
+            </select>
+        </div>
+        <div class="entry">
+            <label for="area">11. Area de desempeño</label>
+            <select name="area" id="">
+                <option value="">Administracion</option>
+                <option value="">Operativo</option>
+                <option value="">Vendedor</option>
+            </select>
+        </div>
+        <div class="entry">
+            <select name="estudios" id="">
+                <option value="tm">Mañana</option>
+                <option value="tt">Tarde</option>
+                <option value="tn">Noche</option>
+            </select>
+        </div>
+        <div class="entry">
+            <h4>13. Conduce?</h4>
+            <label for="conduce">Si</label>
+            <input type="radio" name="conduce" id="">
+            <label for="conduce">No</label>
+            <input type="radio" name="conduce" id="">
+        </div>
+        </div>
+
+        <div id="enviar-resetear">
+            <input type="submit" value="Enviar" class="boton">
+            <input type="reset" value="Resetear" class="boton">
+        </div>
+    </form>
+
+    <footer>
+        <h2> Pie de formulario</h2>
+    </footer>
+</body>
+</html>

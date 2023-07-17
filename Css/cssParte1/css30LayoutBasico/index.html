@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Basico</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            width: 90%;
+            margin: auto;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        header{
+            width: 100%;
+            height: 10%;
+            background-color: gray;
+            padding: 1px;
+        }
+
+        footer{
+            width: 100%;
+            height: 10%;
+            background-color: gray;
+            padding: 1px;
+            align-items: center;
+        }
+
+        div#principal{
+            width: 100%;
+            height: 80%;
+        }
+
+        nav{
+            width: 25%;
+            height: 100%;
+            float: left;
+            display: block;
+            background-color: tomato;
+        }
+
+        div#contenido{
+            float: left;
+            width: 75%;
+            height: 100%;
+            background-color: lightgray;
+            overflow: auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        ul #menu
+        {
+            width: 80%;
+            height: 40%;
+        }
+        ul li {
+            list-style: none;
+            width: 80%;
+            height: 20%;
+            background-color: rgb(208, 208, 208);
+            padding: 10px;
+            box-sizing: border-box;
+            min-width: 100px;
+
+        }
+
+        ul li a{
+            text-decoration: none;
+            text-align: center;
+            color: rgb(98, 98, 98);
+        }
+
+        ul li:hover{
+            transform: scale(1.2);
+            transition-duration: 0.5s;
+            background-color: rgb(136, 136, 136);
+        }
+
+        @media (max-width:600px){
+            body{
+                width: 100%;
+            }
+            #menu{
+                padding: 0;
+                width:100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+        <header>
+            <h2>Titulo principal de pagina</h2>
+        </header>
+    
+        <div id="principal">
+            <nav>
+                <h2>Menu</h2>
+                <ul id="menu">
+                    <li><a href="">HTML</a> </li>
+                    <li><a href="">CSS</a> </li>
+                    <li><a href="">JSCRIPT</a> </li>
+                    <li><a href="">PHP</a> </li>
+                </ul>
+            </nav>
+            <div id="contenido">
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                <h1>El contenido puede crecer indefinidamente agrandando el divvvvvvvvvvvvvvv </h1>
+                
+            </div>
+        </div>
+        
+        <footer>
+            <h2>Pie de pagina</h2>
+        </footer>
+</body>
+</body>
+</html>

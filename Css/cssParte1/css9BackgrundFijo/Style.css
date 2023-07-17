@@ -1,0 +1,29 @@
+.contenedor
+{
+    width: 50%;
+    background-color: lightgrey;
+    border-width: thin;
+    border-style: solid;
+    border-color: black;
+    margin: 0 auto;
+    padding: 4%;
+    box-sizing: border-box;
+}
+
+.imagenDeFondo
+{
+    color: rgb(0, 0, 0);
+    width: 85%;
+    height: 200px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: darkgreen;
+    border-radius: 5px 0;
+    padding: 2%;
+    background-image: url(./ImagenFondo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
