@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Clase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        ul {
+            margin-left: 3em;
+        }
+
+        button {
+            margin-right: 0.4em;
+            padding: 0 0.2em;
+            cursor: pointer;
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 2em 0 0 2em;
+        }
+
+
+        .estilo-1 {
+            height: 300px;
+            width: 400px;
+            background-color: #cfe748ab;
+            border: 4px solid rgb(73, 0, 0);
+            padding: 2em 0 0 3em;
+        }
+
+        .estilo-1 > ul {
+            margin: 6;
+            align-items: center;
+        }
+
+        .estilo-1 > ul > li {
+            font-size: 1.3em;
+            list-style: square;
+        }
+
+        .estilo-1 > ul > h3 {
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+       .estilo-2 {
+            height: 300px;
+            width: 400px;
+            background-color: #A8D2E2;
+            border: 4px solid rgb(128, 26, 114);
+            padding: 2em 0 0 3em;
+        }
+
+        .estilo-2 > ul {
+            margin: 0;
+            color: rgb(128, 26, 114);
+        }
+
+        .estilo-2 > ul > li {
+            font-size: 1.3em;
+            color: rgb(128, 26, 114);
+            list-style: circle;
+        }
+
+        .estilo-2 > ul > h3 {
+            font-weight: bold;
+            font-size: 2em;
+            color: rgb(128, 26, 114);
+        }
+
+  
+        .estilo-3 {
+            height: 300px;
+            width: 400px;
+            background-color: #986262;
+            border: 4px solid rgb(55, 0, 255);
+            padding: 2em 0 0 3em;
+        }
+
+        .estilo-3 > ul {
+            margin: 0;
+            color: 986262;
+        }
+
+        .estilo-3 > ul > li {
+            font-size: 1.3em;
+            color: rgb(55, 0, 255);
+            list-style: lower-latin;
+        }
+
+        .estilo-3 > ul > h3 {
+            font-weight: bold;
+            font-size: 2em;
+            color: rgb(55, 0, 255);
+        }
+
+ 
+        .estilo-4 {
+            height: 300px;
+            width: 400px;
+            background-color: #02ffff;
+            border: 4px solid rgb(22, 255, 1);
+            padding: 2em 0 0 3em;
+        }
+
+        .estilo-4 > ul {
+            margin: 0;
+            color: rgb(22, 255, 1);
+        }
+
+        .estilo-4 > ul > li {
+            font-size: 1.3em;
+            color: rgb(22, 255, 1);
+            list-style: disc;
+        }
+
+        .estilo-4 > ul > h3 {
+            font-weight: bold;
+            font-size: 2em;
+            color: rgb(22, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplos de cambios de estilos dinamicamente</h1>
+    <div id="lista" class="estilo-1">
+        <ul>
+            <h3>Lista con estilo</h3>
+            <li>Texto 1</li>
+            <li>Texto 2</li>
+            <li>Texto 3</li>
+        </ul>
+    </div>
+    <div class="botones">
+        <button type="button" id="tipo1">Tipo 1</button>
+        <button type="button" id="tipo2">Tipo 2</button>
+        <button type="button" id="tipo3">Tipo 3</button>
+        <button type="button" id="tipo4">Tipo 4</button>
+    </div>
+    <script>
+        const lista = document.getElementById("lista");
+        const btnTipo1 = document.getElementById("tipo1");
+        const btnTipo2 = document.getElementById("tipo2");
+        const btnTipo3 = document.getElementById("tipo3");
+        const btnTipo4 = document.getElementById("tipo4");
+
+        btnTipo1.onclick = () => {
+            lista.className = "estilo-1";
+        }
+
+        btnTipo2.onclick = () => {
+            lista.className = "estilo-2";
+        }
+
+        btnTipo3.onclick = () => {
+            lista.className = "estilo-3";
+        }
+
+        btnTipo4.onclick = () => {
+            lista.className = "estilo-4";
+        }
+    </script>
+</body>
+</html>

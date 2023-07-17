@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones entre Inputs</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        div{
+            background-color: rgba(126, 230, 248, 0.527);
+            padding: 30px;
+            box-sizing: border-box;
+            margin: 0 2% 2%;
+        }
+        div p{
+            width: 150px;
+            display: inline-block;
+        }
+        div input{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Introducir un valor en los cuadros de texto y luego pulsar el boton para ejecutar la funcion correspondiente</h2>
+    <div>
+        <p>Entrada 1:</p>
+        <input type="number" id="i1">
+        <br>
+        <p>Entrada 2:</p>
+        <input type="number" id="i2">
+        <br>
+        <p>Entrada 3:</p>
+        <input type="number" id="i3">
+        <br>
+        <p>Resultado:</p>
+        <input type="number" id="res" readonly="">
+    </div>
+    <button id="sum">Suma</button>
+    <button id="prom">Promedia</button>
+    <button id="mayor">Mayor</button>
+
+    <script type="text/javascript">
+        document.getElementById("sum").onclick = function(){
+            document.getElementById("res").value = 
+            parseInt(document.getElementById("i1").value) +
+            parseInt(document.getElementById("i2").value) + 
+            parseInt(document.getElementById("i3").value);
+        }
+        document.getElementById("prom").onclick = function(){
+            document.getElementById("res").value = 
+            parseFloat(parseInt(document.getElementById("i1").value) +
+            parseInt(document.getElementById("i2").value) + 
+            parseInt(document.getElementById("i3").value))/3;
+        }
+        document.getElementById("mayor").onclick = function(){
+            var i1 = parseInt(document.getElementById("i1").value);
+            var i2 = parseInt(document.getElementById("i2").value);
+            var i3 = parseInt(document.getElementById("i3").value);
+            if (i1 >= i2){
+                if(i1 >= i3){
+                    document.getElementById("res").value = i1;
+                } else{
+                    document.getElementById("res").value = i3;
+                }
+            } else if (i2 >= i3){
+                    document.getElementById("res").value = i2;
+                } else{
+                    document.getElementById("res").value = i3;
+                }
+        }
+
+    </script>
+</body>
+</html>

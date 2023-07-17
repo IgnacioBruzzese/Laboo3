@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables Objeto Dato</title>
+    <style>
+        * {
+            font-size: 30px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        h3 {
+            font-size: 0.65em;
+        }
+
+        label {
+            font-size: 0.5em;
+        }
+
+        input {
+            font-size: 0.5em;
+        }
+
+        button {
+            font-size: 0.6em;
+            padding: 0.5%;
+        }
+
+        .addPerson {
+            background-color: rgba(134, 235, 168, 0.397);
+            width: 93%;
+            margin: auto;
+            margin-top: 3%;
+            padding: 1%;
+        }
+
+        .control {
+            background-color: rgba(245, 162, 67, 0.432);
+            width: 93%;
+            margin: auto;
+            padding: 1%;
+
+        }
+
+        .presentacion {
+            margin-top: 5%;
+            margin: 2%;
+            display: none;
+        }
+
+        table {
+            border: solid;
+            border-collapse: collapse;
+        }
+        th {
+            width: 100px;
+            height: 15px;
+            border: solid;
+            background-color: rgb(255, 255, 255);
+        }
+        td {
+            width: 150px;
+            height: 15px;
+            border: solid;
+            background-color: rgb(255, 255, 255);
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="consigna">
+            <h1>Consignas del ejercicio</h1>
+        </br>
+            <h3>Declarar y hacer uso de Objetos de dato (datos de tipo objeto)</h3>
+            <h3>Cargar de 2 personas un array por programa</h3>
+            <h3>Dejar de usar la funcion prompt() para ingreso de datos. Armar un contenedor para el ingreso de datos
+                desde consola (solo inputs sin formulario)</h3>
+            <h3>Dejar de usar Document.write() y escribir contenido dentro de un elemento html (Puede ser un div)</h3>
+            <h3>Dos botones de para llamar a dos funciones. Una para cargar un nuevo objeto de dato por teclado y otra
+                para mostrar en formato de tabla el arrat completo de elementos con su longitud</h3>
+            <h3>Un tercer procedimiento para ocultar el elemento de presentacion (usando el parametro de estilo
+                displat:none)</h3>
+        </div>
+
+        <div class="addPerson">
+            <h2>Adicionar persona</h2>
+            <div>
+                <label for="nombre">Nombre:</label><br>
+                <input id="nombre" name="nombre" type="text">
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label><br>
+                <input id="apellido" name="apellido" type="text">
+            </div>
+            <div>
+                <label for="nacimiento">Fecha de Nacimiento:</label><br>
+                <input id="nacimiento" name="nacimiento" type="date">
+            </div>
+            <br>
+            <button id="crearPersona">Crear Persona</button>
+        </div>
+        <div class="control">
+            <h3>Control</h3>
+        </br>
+            <button id="listarPersona" onclick="mostrar()">Lista persona</button>
+            <button id="ocultarPresentacion" onclick="ocultar()">Ocultar Presentacion</button>
+        </div>
+        <div class="presentacion" id="presentacion">
+            <h3>Presentacion</h3>
+
+
+        </div>
+    </div>
+    <br>
+
+    <script>
+
+        let objetoPersona = {};
+        let arregloPersona = [];
+
+
+        const nombreInput = document.getElementById('nombre');
+        const apellidoInput = document.getElementById('apellido');
+        const nacimientoInput = document.getElementById('nacimiento');
+        const crearPersona = document.getElementById('crearPersona');
+        const listarPersona = document.getElementById('listarPersona');
+        const ocultarPresentacion = document.getElementById('ocultarPresentacion');
+        const presentacion = document.getElementById('presentacion');
+        const miTabla = document.getElementById('miTabla');
+
+
+        crearPersona.addEventListener('click', () => {
+            let nombre = nombreInput.value;
+            let apellido = apellidoInput.value;
+            let nacimiento = nacimientoInput.value;
+
+
+            if (nombre != '' && apellido != '' && nacimiento != '') {
+
+                let persona = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    nacimiento: nacimiento
+                }
+                arregloPersona.push(persona);
+                console.log(arregloPersona);
+
+                limpiarValores();
+                actualizarTabla();
+            } else {
+                alert('Los campos Nombre, Apellido y Fecha de nacimiento deben de estar completos...');
+            }
+            actualizarTabla();
+        });
+
+        function actualizarTabla() {
+
+            let texto = '<h2>Presentacion</h2>';
+
+            texto += "<table>";
+
+
+            arregloPersona.forEach((item, index) => {
+                texto += '<tr>';
+                texto += '<td>' + item.nombre + '' + '</td>';
+                texto += '<td>' + item.apellido + '' + '</td>';
+                texto += '<td>' + item.nacimiento + '' + '</td>';
+
+                texto += '</tr>';
+
+            });
+            texto = texto + "</table>" + "<h3>La longitud del arreglo de persona es: " + arregloPersona.length + "</h3>";
+
+            presentacion.innerHTML = texto;
+        };
+
+
+        function mostrar() {
+            presentacion.style.display = 'block';
+        }
+        function ocultar() {
+            presentacion.style.display = 'none';
+        }
+
+        function limpiarValores() {
+            nombreInput.value = '';
+            apellidoInput.value = '';
+            nacimientoInput.value = '';
+        };
+
+    </script>
+</body>
+</html>

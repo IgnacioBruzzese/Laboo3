@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcance</title>
+</head>
+<body>
+    <button id="incorrecta">Inicializacion incorrecta</button>
+    <button id="correcta">Inicializacion correcta</button>
+    <button id="muestra">Muestra variable global</button>
+    
+    <script type="text/javascript">
+        var a;
+        document.getElementById("incorrecta").onclick= function() {
+            var a = prompt('Ingrese valor para la variable global');
+            alert("El valor de la variable local ingresada es: " + a);
+            alert("El tipo de la variable local ingresada es: " + typeof(a));
+        }
+        document.getElementById("correcta").onclick= function() {
+            a = prompt('Ingrese valor para la variable global');
+            alert("El valor de la variable local ingresada es: " + a);
+            alert("El tipo de la variable local ingresada es: " + typeof(a));
+        }
+        document.getElementById("muestra").onclick= function() {
+            alert("El valor de la variable global es: " + a);
+            alert("El tipo de la variable global es: " + typeof(a));
+        }
+
+    </script>
+
+    <br>
+    <hr>
+</body>
+</html>

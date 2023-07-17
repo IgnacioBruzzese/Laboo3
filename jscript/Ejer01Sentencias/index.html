@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentencias</title>
+</head>
+<body>
+
+    <h1>Texto 1 escrito directamente en html</h1>
+
+    <script type="text/javascript">
+        alert("Este mensaje de alerta está escrito desde un script del documento. Esta ventana de alerta es modal lo que significa que el flujo de escritura del documento se interrumpe hasta el evento de aceptacion. El navegador Muestra este tipo de ventana con anterioridad a la interpretacion o renderizacion del documento");
+        document.write("<h1>Texto 2 Mensaje escrito desde JavaScript.</h1>");
+        document.write("<h1>No pisa al documento porque aún no terminó el flujo de escritura del navegador.</h1>");
+    </script>
+
+    <h1>Texto 3 escrito directamente en html</h1>
+
+    <script type="text/javascript">
+        document.write("<h1>Texto 4 Mensaje escrito desde JavaScript.</h1>");
+        document.write("<h1>No pisa al documento porque aún no terminó el flujo de escritura del navegador.</h1>");
+    </script>
+
+</body>
+</html>

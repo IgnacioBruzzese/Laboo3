@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacion de Objetos</title>
+    <style>
+        * {
+            font-size: 20px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        .container {
+            width: 100%;
+            width: 100%;
+        }
+
+        .cuadro {
+            background-color: rgba(129, 250, 230, 0.829);
+            width: 50%;
+            height: 350px;
+            margin: auto;
+            margin-top: 10%;
+            overflow: auto;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .claseObjetoDinamico {
+            border: 1px solid rgb(91, 245, 124);
+            margin: 3px;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="crear">Crear</button>
+        <button id="limpiar">Limpiar</button>
+        <button id="info">info</button>
+        <div class="cuadro">
+
+        </div>
+    </div>
+
+    <script>
+        const objContenido = {};
+        const arrContenido = [];
+        let texto = '<h2>Se ha creado el objeto nº: ';
+        const objDiv = document.createElement('div');
+
+        const cuadro = document.querySelector('.cuadro');
+        const btnCrear = document.getElementById('crear');
+        const btnLimpiar = document.getElementById('limpiar');
+        const btnInfo = document.getElementById('info');
+
+        btnCrear.addEventListener('click', () => {
+
+            const objDiv = document.createElement('div'); 
+            const objetoNumero = cuadro.childNodes.length - 1 + 1; 
+            const objetoTexto = texto + objetoNumero + '</h2>'; 
+            objDiv.innerHTML = objetoTexto; 
+            objDiv.className = 'claseObjetoDinamico';
+            cuadro.appendChild(objDiv); 
+
+        });
+
+        btnLimpiar.addEventListener('click', () => {
+            while (cuadro.childNodes.length > 0) {
+                cuadro.removeChild(cuadro.childNodes[0]);
+            }
+        });
+
+        btnInfo.addEventListener('click', () => {
+            alert('La longitud del array es: ' + (cuadro.childNodes.length - 1));
+            cuadro.childNodes.forEach((elemento) => {
+
+                alert(elemento.textContent);
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Confirmacion</title>
+    <style>
+        * {
+            font-size: 20px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.2em;
+        }
+        .container{
+            margin: auto;
+            width: 69%;
+            height: 350px;
+            background-color: rgba(255, 155, 230, 0.411);
+        }
+        form{
+            padding: 1%;
+        }
+        .botones{
+            margin: 5%;
+            
+        }
+        button{
+            padding: 1%;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmacion de envio y de reset</h1>
+    </br>
+        <form id="myForm">
+            <div>
+                <label>Nombre:</label>
+                <div>
+                    <input type="text" name="nombre" id="nombre">
+                </div>
+            </div>
+            <div>
+                <label for="apellido">Apellido</label>
+                <div>
+                    <input type="text" name="apellido" id="apellido">
+                </div>
+            </div>
+            <div class="botones">
+                <button type="submit" id="blanquear">Blanquear</button>
+                <button id="enviar">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const blanquear = document.getElementById('blanquear');
+        const enviar = document.getElementById('enviar');
+        const formulario = document.getElementById('myForm');
+        const nombre = document.getElementById('nombre');
+        const apellido = document.getElementById('apellido');
+
+        blanquear.addEventListener('click', (e) => {
+            formulario.reset();
+        });
+
+        enviar.addEventListener('click', (e) => {
+            if(nombre.value == '' || apellido.value == ''){
+                e.preventDefault();
+                alert('Los campos nombre y apellido deben de estar completados');
+            }else{
+                let confirmar = confirm('Esta seguro de enviar');
+                if(confirmar){
+                    formulario.method = 'get';
+                    formulario.action = '/jscript/Ejer11FormConfirmacion/cargaconfirmada.html';
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>

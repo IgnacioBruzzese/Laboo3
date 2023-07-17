@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcance</title>
+</head>
+<body>
+    <h2>Introducir un valor en el cuadro de texto y luego pulsar el boton para ejecutar el procedimiento correspondiente</h2>
+    <input type="number" id="entrada">
+    <button id="muestra">Muestra valor</button>
+    <button id="suma1">Suma 1</button>
+    <button id="elev2">x**2</button>
+    <button id="mult2">Multiplica * 2</button>
+    <button id="2elev">2**x</button>
+
+    <script type="text/javascript">
+        document.getElementById("muestra").onclick = function(){
+            alert(document.getElementById("entrada").value);
+        }
+        document.getElementById("suma1").onclick = function(){
+            document.getElementById("entrada").value = parseInt(document.getElementById("entrada").value) + 1;
+        }
+        document.getElementById("elev2").onclick = function(){
+            document.getElementById("entrada").value = parseInt(document.getElementById("entrada").value) ** 2;
+        }
+        document.getElementById("mult2").onclick = function(){
+            document.getElementById("entrada").value = parseInt(document.getElementById("entrada").value) * 2;
+        }
+        document.getElementById("2elev").onclick = function(){
+            document.getElementById("entrada").value = 2**parseInt(document.getElementById("entrada").value);
+            alert(document.getElementById("entrada").value);
+        }
+    </script>
+
+</body>
+</html>
