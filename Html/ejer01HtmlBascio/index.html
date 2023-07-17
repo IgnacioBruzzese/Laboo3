@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Elemntos Basicos</title>
+</head>
+<body>
+
+    <header>
+
+    <h1>Primer Parrafo Corto (Incluye el retorno del carro)</h1>
+    <h2>Segundo Parrafo Corto (Incluye el retorno del carro)</h2>
+    <h2>Grupo de Elementos de Navegacion</h2>
+
+    <br/>
+
+    <ul> 
+        <li>
+            <a href="https://www.google.com.ar/">Google</a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com.ar/">YouTube</a>
+        </li>
+        <li>
+            <a href="https://login.yahoo.com/?.intl=es">Yahoo</a>
+        </li>
+    </ul>
+
+    <br/>
+
+    <hr/>
+    <a href="./ejer01OtraPaginaEnLaMismaVentana.html">Una Pagina en la Misma Ventana</a>  
+    <a href="./ejer01OtraPaginaEnNuevaVentana.html" target ="_blank">Una Pagina en una nueva ventana</a>  
+    <a href="#otroLugarDentro">Ancla a otro punto de esta página</a>
+    <hr/>
+
+    <br/>
+
+    </header>
+
+
+    <main>
+
+    <h2>Preguntas para responder</h2>
+    <h4>1.Dar un par de ejemplos de uso de etiquetas meta</h4>
+    <p> Algunos ejemplos de etiquetas meta son: "meta charset="UTF-8"" para definir la codificación de caracteres utilizada en la página 
+        y "meta name="description" content="Descripción de la página"" para proporcionar una descripción breve de la página.</p>
+    <br/>
+
+    <h4>2.Nombrar al menos 2 atributos aplicables a la etiqueta HTML</h4>
+    <p> Algunos de los atributos aplicables a la etiqueta HTML son el charset, que establece el juego de caracteres utilizado en el documento, 
+        y el name, que proporciona un nombre para el elemento que puede ser utilizado por otras etiquetas o scripts.</p>
+    <br/>
+
+    <h4>3.Como se relaciona un header http con la etiqueta head de HTML?</h4>
+    <p> El header HTTP se utiliza para enviar información adicional en una solicitud o respuesta HTTP, mientras que la etiqueta head de HTML se 
+        utiliza para incluir información sobre el documento, como el título, los enlaces a hojas de estilo y scripts, y las metaetiquetas.</p>
+    <br/>
+
+    <h4>4. Que es UTF8?</h4>
+    <p> UTF-8 es un conjunto de caracteres que permite representar un amplio rango de caracteres de diferentes idiomas y scripts.</p>
+    <br/>
+    
+    <h4>5. Que atributo HTML sirve para aplicar estilo, a que etiqueta es aplicable?</h4>
+    <p> El atributo HTML que se utiliza para aplicar estilo es el atributo "style", que se aplica a cualquier etiqueta HTML y permite establecer estilos en línea.</p>
+    <br/>
+
+    <h4>6. Donde se indica que un enlace debe ubicar el documento en una nueva pestaña?</h4>
+    <p> Se indica que un enlace debe abrirse en una nueva pestaña utilizando el atributo "target" con el valor "_blank" en la etiqueta de anclaje (a).</p>
+    <br/>
+
+    <h4>7. Explicar cuando usarían etiquetas semánticas y con que propósito.</h4>
+    <p> Las etiquetas semánticas se utilizan para proporcionar información adicional sobre el contenido de un documento HTML, lo que puede ser útil para la accesibilidad y el SEO.</p>
+    <br/>  
+
+    <h4>8. ¿Que atributos de estilo básicos aplicarían a una tabla? Explicar.</h4>
+    <p> Algunos de los atributos de estilo básicos que se aplican a una tabla son el ancho de borde, la alineación de texto y el espaciado entre celdas.</p>
+    <br/> 
+    
+    <h4>9. ¿Que diferencia existe entre la etiqueta body de un documento HTML y el body del protocolo HTTP?</h4>
+    <p> La etiqueta body de un documento HTML contiene todo el contenido visible del documento, mientras que el body del protocolo HTTP es una parte de la cabecera HTTP que contiene 
+        información adicional sobre la solicitud o respuesta.</p>
+    <br/> 
+
+    
+    <h4>10. ¿Que atributos marcan la agrupación de celdas de una tabla?. ¿A que etiquetas se aplican?</h4>
+    <p> Los atributos que se utilizan para agrupar celdas de una tabla son "rowspan" y "colspan", que se aplican a las etiquetas de celda (td) y encabezado (th).</p>
+    <br/> 
+
+    <br/>
+    <h1>Cuerpo Principal del Contenido</h1>
+    <p>La etiqueta main es en HTML5 una etiqueta semántica. Esto quiere decir que tiene que ver con el significado de lo contenido dentro de ella. Define el contenido principal de la pagina. Unicamente puede haber una sola etiqueta como esta en todo el documento.
+        El contenido escrito aqui dentro no se repite en el resto del sitio (todo lo contrario a los encabezados de pagina, los menues de navegacion y pie de pagina). Es usado por buscadores para indexar.
+        Conviene usar aqui textos que ayuden a encontrar la pagina luego de procesos de indexacion de los buscadores</p>
+
+
+
+    <section>
+
+    <h2>Seccion etiquetas semanticas estructurales mas importantes:</h2>
+    <br/>
+    <ul>
+        <li>
+            <header>HEADER</header>
+        </li>
+        <li>
+            <fooster>FOOTER</fooster>
+        </li>
+        <li>
+            <section>SECTION</section>
+        </li>
+        <li>
+            <article>ARTICLE</article>
+        </li>
+        <li>
+            <nav>NAV</nav>
+        </li>
+        <li>
+            <address>ADDRESS</address>
+        </li>
+    </ul>
+    <br/>
+
+    <p>Las estiquetas semanticas estructurales estanr relacionadas directamente con el significado del contenido y no con los estilos ni las posiciones dentro del documento.</p>
+
+    <br/>
+
+    <h2>Reglas para etiquetas semanticas:</h2>
+
+    <ul>
+        <li>
+            <section>Los distintos tipos de contenido se pueden asociar a las etiquetas SECTION</section>
+        </li>
+        <li>
+            <article>Las unidades de contenido se asocian a las etiquetas ARTICLE. O sea que un section anida múltiples ARTICLES</article>
+        </li>
+        <li>
+            <header><footer>Las etiquetas HEADER y FOOTER pueden ser anidadads dentro de otras HEADER o FOOTER.</footer></header>
+        </li>  
+        <li>
+            <nav>La etiqueta NAV debe ser única en el documento y corresponde a los elementos de navegación del documento</nav>
+        </li>  
+        <li>
+            <main>Reservar etiqueta h1 para usar dentro de etiquetas top level, como main, header o footer.</main>
+        </li> 
+    </ul>
+
+    </section>
+
+
+    <section>
+
+    <br/>
+
+    <h3>Sector de imagenes</h3>
+
+    <p>En esta seccion mostraremos imagenes de nuestro sitio</p>
+    <p>La siguiente imagen está insertada en tamaño natural.</p>
+
+    <br/>
+
+    <img src="./greco.jpg" alt="pintura greco">
+
+    <br/>
+    <br/>
+
+    <p>La misma imagen, cuadro del El Greco, con distintos atributos width:</p>
+    <p>De acuerdo a las dimensiones de la imagen, solo la primera no se pixelara</p>
+    <p>Cada elemento imagen se ubica al lado del anterior hasta completar el ancho de la ventana (view port)</p>
+    <p>Todas las siguientes imgs se verán deformadas por haber definido doble parámetro de estilo (ancho y alto)</p>
+
+    <br/>
+
+    <img src="./greco.jpg" alt="pintura greco" width="5%" height="400px">
+    <img src="./greco.jpg" alt="pintura greco" width="10%" height="400px">
+    <img src="./greco.jpg" alt="pintura greco" width="15%" height="400px">
+    <img src="./greco.jpg" alt="pintura greco" width="20%" height="400px">
+    <img src="./greco.jpg" alt="pintura greco" width="25%" height="400px">
+    
+    </section>
+
+    <br/>
+    <br/>
+    <br/>
+    <hr/>
+
+
+    <section>
+
+    <h3>Sector de imagenes</h3>
+    <br/>
+
+    <video width="700" controls>
+        <source src="video.mp4" type ="video/mp4">
+        "Video no dispomible."
+    </video>
+
+    </section>
+
+    <section id="otroLugarDentro">
+
+    <br/>
+    <h3>Anclajes</h3>
+    <p>Punto de anclado</p>
+    </section>
+
+    <br/>
+    <br/>
+
+    <footer>
+        <h1>Datos del Alumno</h1>
+
+        <ul>
+            <li>
+                <p>Nombre:  Ignacio Bruzzese</p>
+            </li>
+            
+            <li>
+                <p>Direccion : Gral Paz 8888</p>
+            </li>
+            
+            <li>
+                <p>Legajo : 15-27815</p>
+            </li>
+
+            <li>
+                <p>Email : nachobruzzese38@gmial.com</p>
+            </li>
+        </ul>
+
+    </footer>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    
+</body>
+</html>
