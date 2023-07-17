@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Lista Ordenar Filtra</title>
+    <style>
+
+        html, body
+        {
+            width: 100vw;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #contenedor
+        {
+            width: 100%;
+            height: 80%;
+        }
+
+        table
+        {
+            display: block;
+            height: 100%;
+            width: 100vw;
+            border-collapse: collapse;
+            overflow: auto;
+        }
+
+        header, footer
+        {
+            font-weight: bold;
+            background-color: #fd30299c;
+            height: 10%;
+            width: 100%;
+            color: rgb(0, 0, 0);
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        footer
+        {
+            position: fixed;
+            bottom:0;
+            left:0;
+        }
+
+        .th
+        {
+            text-align: center;
+            background-color: rgb(154, 138, 255);
+            padding: 10px 10px 25px 10px;
+            box-sizing:content-box;
+            border-right: 2px solid rgb(250, 70, 70);
+            cursor: pointer;
+        }
+
+        [campo-dato = "id"]
+        {
+            width: 10vw;
+        }
+
+        [campo-dato = "nombre"]
+        {
+            width: 30vw;
+        }
+
+        [campo-dato = "apodo"]
+        {
+            width: 30vw;
+        }
+        
+        [campo-dato = "fundado"]
+        {
+            width: 20vw;
+        }
+
+        tbody tr:nth-child(odd)
+        {
+            background-color: lavender;
+        }
+
+        tbody tr:nth-child(even)
+        {
+            background-color: rgb(203, 203, 251);
+        }
+
+        td
+        {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 900px)
+        {
+
+            [campo-dato = "fundado"]
+            {
+                width: 35vw;
+            }
+        }
+
+        @media (max-width: 600px)
+        {
+            [campo-dato = "fundado"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "apodo"]
+            {
+                width: 60vw;
+            }
+        }
+
+        button{
+            border-radius: 15px;
+            background-color: rgb(255, 0, 0);
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover{
+            cursor: pointer;
+            background-color: rgba(255, 0, 0, 0.411);
+            color: black;
+        }
+
+        #botones
+        {
+            position: fixed;
+            right: 20px;
+        }
+
+        #botones button
+        {
+            padding: 10px;
+            width: 200px;
+            font-weight: bold;
+        }
+
+
+        h3
+        {
+            margin: 0;
+        }
+
+        #titulo
+        {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+            padding-left: 10px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opcion
+        {
+            float: left;
+            height: 30%;
+            width: 50%;
+        }
+
+        thead input
+        {
+            display: block;
+            width: 80%;
+            padding: 5px;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        button
+        {
+            padding: 5px;
+        }
+ 
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <header>
+            <h2>Clubes de Futbol</h2>
+            <div id="botones">
+                
+                <input type="text" readonly id="orden" value="fundado">
+                <button id="cargar">Cargar datos</button>
+                <button id="vaciar">Vaciar datos</button>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th campo-dato="id" class="th" id="thId">ID</th>
+                    <th campo-dato="nombre" class="th" id="thnombre">Nombre</th>
+                    <th campo-dato="apodo" class="th" id="thapodo">Apodo</th>
+                    <th campo-dato="fundado" class="th" id="thfundado">Fundado</th>
+
+                </tr>
+                <tr>
+                    <td campo-dato="id" class="th"  ><input id="filtroId" type="text"></td>
+                    <td campo-dato="nombre" class="th"  ><input id="filtronombre" type="text"></td>
+                    <td campo-dato="apodo" class="th" ><input  id="filtroapodo" type="text"></td>
+                    <td campo-dato="fundado" class="th" ><input id="filtrofundado" type="text"></td>
+
+                </tr>
+
+            </thead>
+            <tbody id="tabla">
+    
+            </tbody>
+        </table>
+        <footer>
+            Pie de Pagina
+        </footer>
+
+        
+    </div>
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    var flag = 0;
+
+    $(document).ready(()=>{
+        
+        $("#thId").click(()=>{
+            $("#orden").val("id");
+        });
+
+        $("#thnombre").click(()=>{
+            $("#orden").val("nombre");
+        });
+
+        $("#thapodo").click(()=>{
+            $("#orden").val("apodo");
+        });
+
+        $("#thfundado").click(()=>{
+            $("#orden").val("fundado");
+        });
+
+
+
+        $("#cargar").click(() =>{
+            console.log("Cargando...");
+            $("#tabla").empty();
+            $("#tabla").html("<h3><i>Cargando...</i></h3>");
+
+            $.ajax({
+                type: "get",
+                url:"./bbdd.php",
+                data: { 
+                        orden: $("#orden").val(), 
+                        id: $("#filtroId").val(),
+                        nombre: $("#filtronombre").val(),
+                        apodo: $("#filtroapodo").val(),
+                        fundado: $("#filtrofundado").val()
+                    },
+                success: (respuestaServer) =>{
+                    alert(respuestaServer);
+                    console.log(respuestaServer);
+                    $("#tabla").empty();
+                    const objJson = JSON.parse(respuestaServer);
+                    objJson.Autos.forEach((valor, indice) =>
+                    {
+                        
+                        const objTr = document.createElement("tr");
+                        const tdId = document.createElement("td");
+                        const tdDescription = document.createElement("td");
+                        const tdnombre = document.createElement("td");
+                        const tdapodo = document.createElement("td");
+                        const tdfundado = document.createElement("td");
+
+                        tdId.innerHTML = valor.id;
+                        objTr.appendChild(tdId);
+                        tdnombre.innerHTML = valor.nombre;
+                        objTr.appendChild(tdnombre);
+                        tdapodo.innerHTML = valor.apodo;
+                        objTr.appendChild(tdapodo);
+                        tdfundado.innerHTML = valor.fundado;
+                        objTr.appendChild(tdfundado);
+
+                        $("#tabla").append(objTr);
+                    });
+                }
+            })
+
+        });
+
+        $("#vaciar").click(()=>{
+            $("#tabla").empty();
+            flag = 0;
+        })
+
+    });
+
+</script>

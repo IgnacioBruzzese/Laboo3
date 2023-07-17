@@ -1,0 +1,975 @@
+<?php 
+
+    session_start(); 
+    $nombre = $_SESSION['nombre'];
+
+    if(isset($_SESSION['nombre'])){
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM</title>
+    <style>
+
+        html, body
+        {
+            
+            width: 100vw;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #contenedor
+        {
+            
+            width: 100%;
+            height: 80%;
+
+        }
+
+        table
+        {
+            display: block;
+            height: 100%;
+            width: 100vw;
+            border-collapse: collapse;
+            overflow: auto;
+            background-image: url("./imagenes/ligaposta.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        header, footer
+        {
+            font-weight: bold;
+            background-color: #f9fc5c9c;
+            height: 10%;
+            width: 100%;
+            color: rgb(0, 0, 0);
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        footer
+        {
+            position: fixed;
+            bottom:0;
+            left:0;
+        }
+
+        .th
+        {
+            text-align: center;
+            background-color: rgb(82, 240, 252);
+            padding: 10px 10px 25px 10px;
+            box-sizing:content-box;
+            border-right: 2px solid rgb(255, 255, 255);
+            cursor: pointer;
+        }
+
+        [campo-dato = "id"]
+        {
+            width: 10vw;
+        }
+
+        [campo-dato = "nombre"]
+        {
+            width: 30vw;
+        }
+
+        [campo-dato = "apodo"]
+        {
+            width: 30vw;
+        }
+        
+        [campo-dato = "fundado"]
+        {
+            width: 20vw;
+        }
+
+        tbody tr:nth-child(odd)
+        {
+            background-color: rgb(236, 252, 253);
+        }
+
+        tbody tr:nth-child(even)
+        {
+            background-color: rgb(195, 230, 252);
+        }
+
+        td
+        {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 900px)
+        {
+
+            [campo-dato = "fundado"]
+            {
+                width: 35vw;
+            }
+        }
+
+        @media (max-width: 600px)
+        {
+            [campo-dato = "fundado"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "apodo"]
+            {
+                width: 60vw;
+            }
+        }
+
+        button{
+            border-radius: 15px;
+            background-color: rgb(0, 217, 255);
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        button:hover{
+            cursor: pointer;
+            background-color: rgb(0, 140, 255);
+            color: rgb(0, 0, 0);
+        }
+
+        #botones
+        {
+            position: fixed;
+            right: 20px;
+        }
+
+        #botones button
+        {
+            padding: 10px;
+            width: 200px;
+            font-weight: bold;
+        }
+
+
+        h3
+        {
+            margin: 0;
+        }
+
+        #titulo
+        {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+            padding-left: 10px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opcion
+        {
+            float: left;
+            height: 30%;
+            width: 50%;
+        }
+
+        thead input
+        {
+            display: block;
+            width: 80%;
+            padding: 5px;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        button
+        {
+            padding: 5px;
+        }
+        .modalVisible
+        {
+            visibility: visible;
+        }
+
+        .modalInvisible
+        {
+            visibility: hidden;
+        }
+
+        #modalModif, #modalAlta
+        {
+
+            position: fixed;
+            top: 28%;
+            left: 32%;
+            padding: 20px;
+            z-index: 10;
+            width: 700px;
+            height: auto;
+            min-width: 300px;
+        }
+
+        #modalRespuesta
+        {
+            position: fixed;
+            top: 15%;
+            left: 20%;
+            box-sizing: border-box;
+            min-width: 260px;
+            width: 1000px;
+            height: auto;
+            background: linear-gradient(180deg, rgb(255, 255, 255), rgb(121, 121, 121));
+            z-index: 11;
+        }
+
+        #textoRespuesta
+        {
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-weight: bold;
+        }
+
+        #formModalModif, #formModalAlta
+        {
+            
+            width: 100%;
+            background-image: url("./imagenes/imagenmodal.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-wrap: wrap;
+            height: 340px;
+            overflow: auto;
+            color: white;
+        }
+
+        .entrada
+        {
+            width: 220px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .entrada input, .entrada select
+        {
+            display: block;
+            /* margin: auto; */
+            width: 150px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .encabezado
+        {
+            height: 10%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            align-items: center;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        #salirModif, #salirAlta, #salirRespuesta
+        {
+            cursor: pointer;
+            background-color: rgb(0, 217, 255);
+            color: rgb(255, 255, 255);
+        }
+
+        .contenedorBloqueado
+        {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .contenedorDesbloqueado
+        {
+            pointer-events: all;
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px)
+        {
+
+        }        
+
+        @media (max-width: 900px)
+        {
+
+            .botonHeader
+            {
+                width: 130px;
+            }
+
+            [campo-dato = "fundado"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "nombre"]
+            {
+                display: none;
+            }
+            
+            [campo-dato = "apodo"]
+            {
+                width: 20%;
+            }
+
+            [campo-dato = "id"], [campo-dato = "fundado"], [campo-dato = "PDF"],[campo-dato = "modif"], [campo-dato = "baja"]
+            {
+                width: 16vw;
+            }
+        }
+
+        @media(max-width: 750px) 
+        {
+            .botonHeader
+            {
+                max-width: 70px;
+            }
+
+            [campo-dato = "fundado"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "nombre"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "fundado"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "id"]
+            {
+                width: 20%;
+            }
+
+            [campo-dato = "nombre"]
+            {
+                width: 20%;
+            }
+
+            [campo-dato = "PDF"]
+            {
+                width: 20%;
+            }
+
+            [campo-dato = "modif"]
+            {
+                width: 20%;
+            }
+
+            [campo-dato = "baja"]
+            {
+                width: 20%;
+            }
+
+            .boton
+            {
+                width: 100%;
+            }
+
+            #modalModif, #modalAlta
+            {
+                position: fixed;
+                top: 20%;
+                left: 14%;
+                padding: 20px;
+                z-index: 10;
+                width: 40%;
+                min-width: 200px;
+            }
+
+            #modalRespuesta
+            {
+                left: 20%;
+            }
+            
+
+            .entrada
+            {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 550px)
+        {
+
+            #opciones
+            {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            #opciones input
+            {
+                margin-bottom: 7px;
+                margin-left: 0px;
+                margin-right: auto;
+                width: 200px;
+            }
+
+            header
+            {
+                height: 100px;
+            }
+
+            [campo-dato = "id"], [campo-dato = "modelo"], [campo-dato = "modif"], [campo-dato = "baja"]
+            {
+                max-width: 20vw;
+            }
+
+            [campo-dato = "PDF"]
+            {
+                display: none;
+            }
+
+
+        }
+
+        @media (max-width: 450px)
+        {
+
+            .botonHeader
+            {
+                max-width: 60px;
+                font-size: 11px;
+            }
+
+
+            [campo-dato = "id"]
+            {
+                display: none;
+            }
+
+            .boton
+            {
+                width: 100%;
+            }
+        }
+        h2 
+            {
+                margin-left: -170px;
+            }
+ 
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <header>
+            <h2>Clubes de Futbol</h2>
+            <div id="botones">
+                
+                <input type="text" readonly id="orden" value="fundado">
+                <button id="cargar">Cargar datos</button>
+                <button id="vaciar">Vaciar datos</button>
+                <button id="alta">Agregar club</button>
+                <a href="../salir.php">Cerrar sesión</a>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th campo-dato="id" class="th" id="thId">ID</th>
+                    <th campo-dato="nombre" class="th" id="thnombre">Nombre</th>
+                    <th campo-dato="apodo" class="th" id="thapodo">Apodo</th>
+                    <th campo-dato="fundado" class="th" id="thfundado">Fundado</th>
+                    <th campo-dato="pdf" class="th" id="thPdf">Pdfs</th>
+                    <th campo-dato="modificacion" class="th" id="thMod">Modificacion</th>
+                    <th campo-dato="baja" class="th" id="thBaja">Baja</th>
+
+                </tr>
+                <tr>
+                    <td campo-dato="id" class="th"  ><input id="filtroId" type="text"></td>
+                    <td campo-dato="nombre" class="th"  ><input id="filtronombre" type="text"></td>
+                    <td campo-dato="apodo" class="th" ><input  id="filtroapodo" type="text"></td>
+                    <td campo-dato="fundado" class="th" ><input id="filtrofundado" type="text"></td>
+                    <td campo-dato="pdf" class="th"></td>
+                    <td campo-dato="modif" class="th"></td>
+                    <td campo-dato="baja" class="th"></td>
+                </tr>
+
+            </thead>
+            <tbody id="tabla">
+    
+            </tbody>
+        </table>
+        <footer>
+            Pie de Pagina
+        </footer>
+
+    </div>
+        
+
+        <div id="modalModif" class="modalInvisible">
+            <div class="encabezado">
+                <div>Modificar Artículo</div>
+                <button id="salirModif">X</button>
+            </div>
+            <form  id="formModalModif" method="post" enctype="multipart/form-data">
+                <div class="entrada">
+                    <label for="idModif">ID: </label>
+                    <input type="number" id="idModif" name="idModif" required >
+                </div>
+                <div class="entrada">
+                    <label for="nombreModif">Nombre: </label>
+                    <input type="text" id="nombreModif" name="nombreModif" required>
+                </div>
+                <div class="entrada">
+                    <label for="apodoModif">Apodo: </label>
+                    <input type="text" id="apodoModif" name="apodoModif" required>
+                </div>
+                <div class="entrada">
+                    <label for="fundadoModif">Fundado: </label>
+                    <input type="number" id="fundadoModif" name="fundadoModif" required> 
+                </div>
+                <div class="entrada">
+                    <label> Documento Pdf: </label>
+                    <input type="file" id="pdfModif" name="pdfModif" >
+                </div>
+                <div class="entrada">
+                    <input type="button" value="Modificar" id="enviarModif">
+                </div>
+            </form>
+        </div>
+    
+    
+        <div id="modalAlta" class="modalInvisible">
+            <div class="encabezado">
+                <div>Alta Artículo</div>
+                <button id="salirAlta">X</button>
+            </div>
+            <form id="formModalAlta" method="post" enctype="multipart/form-data">
+                <div class="entrada">
+                    <label for="idAlta">ID: </label>
+                    <input type="number" id="idAlta" name="idAlta" required>
+                </div>
+                <div class="entrada">
+                    <label for="nombreAlta">Nombre: </label>
+                    <input type="text" id="nombreAlta" name="nombreAlta" required>
+                </div>
+                <div class="entrada">
+                    <label for="apodoAlta">Apodo: </label>
+                    <input type="text" id="apodoAlta" name="apodoAlta" required>
+                </div>
+                <div class="entrada">
+                    <label for="fundadoAlta">Fundado: </label>
+                    <input type="number" id="fundadoAlta" name="fundadoAlta" required> 
+                </div>
+
+                <div class="entrada">
+                    <label> Documento Pdf: </label>
+                    <input type="file" id="pdfAlta" name="pdfAlta">
+                </div>
+                <div class="entrada">
+                    <input type="button" value="Alta" id="enviarAlta">
+                </div>
+            </form>
+        </div>
+    
+    
+        <div id="modalRespuesta" class="modalInvisible">
+            <div class="encabezado">
+                <div>Respuesta del servidor</div>
+                <button id="salirRespuesta">X</button>
+            </div>
+            <div id="textoRespuesta">
+                Respuesta del servidor
+            </div>
+        </div>
+    
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    var flag = 0;
+
+    $(document).ready(()=>{
+        
+        $("#thId").click(()=>{
+            $("#orden").val("id");
+        });
+
+        $("#thnombre").click(()=>{
+            $("#orden").val("nombre");
+        });
+
+        $("#thapodo").click(()=>{
+            $("#orden").val("apodo");
+        });
+
+        $("#thfundado").click(()=>{
+            $("#orden").val("fundado");
+        });
+
+
+
+        $("#cargar").click(() =>{
+            console.log("Cargando...");
+            $("#tabla").empty();
+            $("#tabla").html("<h3><i>Cargando...</i></h3>");
+
+            $.ajax({
+                type: "get",
+                url:"./bbdd.php",
+                data: { 
+                        orden: $("#orden").val(), 
+                        id: $("#filtroId").val(),
+                        nombre: $("#filtronombre").val(),
+                        apodo: $("#filtroapodo").val(),
+                        fundado: $("#filtrofundado").val()
+                    },
+                success: (respuestaServer) =>{
+                    alert(respuestaServer);
+                    console.log(respuestaServer);
+                    $("#tabla").empty();
+                    const objJson = JSON.parse(respuestaServer);
+                    objJson.Autos.forEach((valor, indice) =>
+                    {
+                        
+                        const objTr = document.createElement("tr");
+                        const tdId = document.createElement("td");
+                        const tdDescription = document.createElement("td");
+                        const tdnombre = document.createElement("td");
+                        const tdapodo = document.createElement("td");
+                        const tdfundado = document.createElement("td");
+                        var tdPDF = document.createElement("td");
+                        var tdModif = document.createElement("td");
+                        var tdBaja = document.createElement("td");
+                        
+
+
+                        tdId.setAttribute("campo-dato", "id");
+                        tdnombre.setAttribute("campo-dato", "nombre");
+                        tdapodo.setAttribute("campo-dato", "apodo");
+                        tdfundado.setAttribute("campo-dato", "fundado");
+                        tdPDF.setAttribute("campo-dato", "PDF");
+                        tdModif.setAttribute("campo-dato", "modif");
+                        tdBaja.setAttribute("campo-dato", "baja");
+
+                        tdId.innerHTML = valor.id;
+                        objTr.appendChild(tdId);
+                        tdnombre.innerHTML = valor.nombre;
+                        objTr.appendChild(tdnombre);
+                        tdapodo.innerHTML = valor.apodo;
+                        objTr.appendChild(tdapodo);
+                        tdfundado.innerHTML = valor.fundado;
+                        objTr.appendChild(tdfundado);
+
+                        tdPDF.innerHTML = "<button class='boton' campo-dato='PDF'>PDF</button>";
+                        objTr.appendChild(tdPDF);
+                        tdModif.innerHTML = "<button class='boton' id='Modif' campo-dato='modif'>Modificar</button>";
+                        objTr.appendChild(tdModif);
+                        tdBaja.innerHTML = `<button class='boton' campo-dato='baja'>Baja</button>`;
+                        objTr.appendChild(tdBaja);
+
+                        tdPDF.onclick = function(){
+                            cargarPDF(valor.id);
+                        }
+
+                        tdBaja.onclick = function()
+                        {
+                            if(confirm("¿Está seguro de dar de baja el artículo?"))
+                            {
+                                baja(valor.id);
+                            }
+                        }   
+
+                        tdModif.onclick = function()
+                        {
+                            document.getElementById("contenedor").className = "contenedorBloqueado";
+                            $("#enviarModif").attr("disabled", false);
+                            document.getElementById("modalModif").className = "modalVisible";
+                            cargarModif(valor.id);
+                        }
+
+                        $("#tabla").append(objTr);
+                    });
+                }
+            })
+
+        });
+
+        $("#vaciar").click(()=>{
+            $("#tabla").empty();
+            flag = 0;
+        })
+
+    });
+
+</script>
+
+<script>
+
+            // MOFICICAR
+
+    function habilitarModif()
+    {
+        $("#enviarModif").attr("disabled", false);
+    }
+
+    $("#salirModif").click(function(){
+    document.getElementById("modalModif").className = "modalInvisible";
+    document.getElementById("contenedor").className = "contenedorDesbloqueado";
+    vaciarCampos();
+    }); 
+    
+
+    $("#enviarModif").click(function()
+    {
+        if(confirm("¿Está seguro de querer modificar el artículo?"))
+        {
+        var datos = new FormData($("#formModalModif")[0]);
+            $.ajax({
+            type: "post",
+            method: "post",
+            enctype: "multipart/form-data",
+            url: "./modificar.php",
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: datos,
+            success: function(respuesta)
+            {
+                document.getElementById("modalRespuesta").className = "ModalVisible";
+                document.getElementById("textoRespuesta").innerText = respuesta;
+            }
+        })
+        }
+            
+    });    
+
+    function cargarModif(id)
+    {
+        $.ajax({
+                type: "get",
+                url: "./salidaJsonArticulo.php",
+                data: { id: id },
+                success: function (respuestaDelServer) {
+                    objetoDato = JSON.parse(respuestaDelServer);
+                    $("#idModif").val(objetoDato.id);
+                    $("#nombreModif").val(objetoDato.nombre);
+                    $("#apodoModif").val(objetoDato.apodo);
+                    $("#fundadoModif").val(objetoDato.fundado);
+                }
+            });
+    }
+
+    //      PDF
+
+    function cargarPDF(id)
+    {
+        $.ajax({
+            type: "get",
+            url: "./pdf.php",
+            data: {id: id},
+            success: function(respuestaServer)
+            {
+                $("#textoRespuesta").empty();
+                var objetoDato = JSON.parse(respuestaServer);
+                document.getElementById("modalRespuesta").className = "ModalVisible";
+                $("#textoRespuesta").html("<iframe width='100%' height='600px' src='data:application/pdf;base64," + objetoDato.documentoPDF + "'></iframe>");
+            }
+        })
+    }
+
+        //                ALTA
+
+    $("#salirAlta").click(function(){
+    document.getElementById("modalAlta").className = "modalInvisible";
+    document.getElementById("contenedor").className = "contenedorDesbloqueado";
+    vaciarCampos();
+    });
+
+    $("#salirRespuesta").click(function(){
+    document.getElementById("modalRespuesta").className = "modalInvisible";
+    });
+
+    $("#alta").click(function(){
+            document.getElementById("contenedor").className = "contenedorBloqueado";
+            document.getElementById("modalAlta").className = "modalVisible";
+            $("#formModalAlta").show();
+
+        });
+
+        function habilitarAlta()
+    {
+        $("#enviarAlta").attr("disabled", false);
+        
+    }
+
+    $("#enviarAlta").click(function(){
+
+        var confirmacion = confirm("¿Está seguro de enviar el formulario?");
+        if(confirmacion)
+        {
+            var datos = new FormData($("#formModalAlta")[0]);
+            $.ajax({
+            type: "post",
+            method: "post",
+            enctype: "multipart/form-data",
+            url: "./alta.php",
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: datos, 
+            success: function(respuesta)
+            {
+                
+                document.getElementById("modalRespuesta").className = "ModalVisible";
+                document.getElementById("textoRespuesta").innerHTML = respuesta;
+            }
+        });
+        }
+    })         
+
+
+    //                  BAJAS    
+    function baja($codArt)
+    {
+        $.ajax({
+            type: "post",
+            url: "./baja.php",
+            data: {id: $codArt},
+            success: function(respuesta)
+            {
+                document.getElementById("modalRespuesta").className = "ModalVisible";
+                document.getElementById("textoRespuesta").innerHTML = respuesta;
+            }
+        });
+    }
+
+    function vaciarCampos()
+    {
+        $("#idAlta").val("");
+        $("#nombreAlta").val("");
+        $("#apodoAlta").val("");
+        $("#fundadoAlta").val("");
+        $("#pdfAlta").val("");
+
+        $("#idModif").val("");
+        $("#nombreModif").val("");
+        $("#apodoModif").val("");
+        $("#fundadoModif").val("");
+        $("#pdfModif").val("");
+    }
+
+
+
+    $(document).ready(function(){
+        cargarDesplegable();
+
+        $("#formModalAlta").keyup(function()
+            {
+                habilitarAlta();
+            }
+        );
+
+        $("#formModalModif").keyup(function()
+            {
+                habilitarModif();
+            }
+        );
+
+        $("#vaciarFiltros").click(function()
+        {
+            $("#filtroId").val("");
+            $("#filtronombre").val("");
+            $("#filtroapodo").val("");
+            $("#filtrofundado").val("");
+            $("#orden").val("fundado");
+        });
+/*
+        $("#thId").click(()=>{
+            $("#orden").val("id");
+        });
+
+        $("#thnombre").click(()=>{
+            $("#orden").val("nombre");
+        });
+
+        $("#thapodo").click(()=>{
+            $("#orden").val("apodo");
+        });
+
+        $("#thfundado").click(()=>{
+            $("#orden").val("fundado");
+        });
+
+
+        $("#salirRespuesta").click(function()
+        {
+            document.getElementById("modalModif").className = "modalInvisible";
+            document.getElementById("modalAlta").className = "modalInvisible";
+            document.getElementById("modalRespuesta").className = "modalInvisible";
+            document.getElementById("contenedor").className = "contenedorDesbloqueado";
+
+        });
+
+
+        $("#cargar").click(function(){
+            $("#tabla").empty();
+            $("#tabla").html("<h3><i>Cargando datos...</i></h3>");
+            cargaDatos();
+        });
+
+        $("#vaciar").click(function(){
+            $("#tabla").empty();
+        })
+
+        function baja($id)
+    {
+        $.ajax({
+            type: "post",
+            url: "./baja.php",
+            data: {id: $id},
+            success: function(respuesta)
+            {
+                document.getElementById("modalRespuesta").className = "ModalVisible";
+                document.getElementById("textoRespuesta").innerHTML = respuesta;
+            }
+        });
+    }
+    */
+    });
+    
+</script>
+<?php 
+    }else{
+
+        header('Location: ./login.php');
+
+    }
+
+?>
+
+
